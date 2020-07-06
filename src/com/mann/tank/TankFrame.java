@@ -49,7 +49,7 @@ public class TankFrame extends Frame {
 		// 左、上、右、下 四个按键的默认状态。
 		boolean bL = false;
 		boolean bU = false;
-		boolean bE = false;
+		boolean bR = false;
 		boolean bD = false;
 
 		@Override
@@ -78,8 +78,23 @@ public class TankFrame extends Frame {
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			// 当按键按抬起时触发
-			System.out.println("key released");
+			int key = e.getKeyCode();
+			switch (key) {
+			case KeyEvent.VK_LEFT:
+				bL = false;
+				break;
+			case KeyEvent.VK_UP:
+				bU = false;
+				break;
+			case KeyEvent.VK_RIGHT:
+				bR = false;
+				break;
+			case KeyEvent.VK_DOWN:
+				bD = false;
+				break;
+			default:
+				break;
+			}
 		}
 
 	}

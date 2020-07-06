@@ -15,7 +15,7 @@ public class Demo {
 		f.setTitle("tank war");
 		f.setVisible(true);
 
-		// 创建监听器
+		// 创建监听器，监听当点击叉叉的时候，退出系统
 		f.addWindowListener(new WindowAdapter() {
 
 			@Override

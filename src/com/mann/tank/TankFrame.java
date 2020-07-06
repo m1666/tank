@@ -17,6 +17,9 @@ public class TankFrame extends Frame {
 		this.setResizable(false);
 		this.setTitle("tank war");
 		this.setVisible(true);
+		
+		// 按键监听
+		this.addKeyListener(new MyKeyListener());
 
 		// 创建监听器，监听当点击叉叉的时候，退出系统
 		this.addWindowListener(new WindowAdapter() {

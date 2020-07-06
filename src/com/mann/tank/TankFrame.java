@@ -43,7 +43,7 @@ public class TankFrame extends Frame {
 		y += 10;
 	}
 	
-	// 键盘监听处理类
+	// 键盘监听事件处理类
 	class MyKeyListener extends KeyAdapter {
 
 		@Override

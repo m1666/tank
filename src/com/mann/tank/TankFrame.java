@@ -8,7 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
-	
+
 	private static int x = 200, y = 200;
 
 	public TankFrame() {
@@ -17,7 +17,7 @@ public class TankFrame extends Frame {
 		this.setResizable(false);
 		this.setTitle("tank war");
 		this.setVisible(true);
-		
+
 		// 按键监听
 		this.addKeyListener(new MyKeyListener());
 
@@ -31,26 +31,49 @@ public class TankFrame extends Frame {
 			}
 
 		});
-	 }
+	}
 
 	@Override
 	public void paint(Graphics g) {
-		
+
 		// paint方法会使整个画布刷新
-		System.out.println("【paint方法】: x = " + x + ", y = " + y);
+//		System.out.println("【paint方法】: x = " + x + ", y = " + y);
 		g.fillRect(x, y, 50, 50);
-		x += 10;
+		// x += 10;
 		// y += 10;
 	}
-	
+
 	// 键盘监听处理类
 	class MyKeyListener extends KeyAdapter {
+		
+		// 左、上、右、下 四个按键的默认状态。
+		boolean bL = false;
+		boolean bU = false;
+		boolean bE = false;
+		boolean bD = false;
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			x += 200;
+			int key = e.getKeyCode();
+			switch (key) {
+			case KeyEvent.VK_LEFT:
+				bL = true;
+				break;
+			case KeyEvent.VK_UP:
+				bU = true;
+				break;
+			case KeyEvent.VK_RIGHT:
+				bR = true;
+				break;
+			case KeyEvent.VK_DOWN:
+				bD = true;
+				break;
+			default:
+				break;
+			}
+			// x += 200;
 			// repaint();
-			
+
 		}
 
 		@Override
@@ -58,8 +81,7 @@ public class TankFrame extends Frame {
 			// 当按键按抬起时触发
 			System.out.println("key released");
 		}
-		
+
 	}
-	
 
 }

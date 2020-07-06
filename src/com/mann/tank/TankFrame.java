@@ -40,16 +40,17 @@ public class TankFrame extends Frame {
 		System.out.println("【paint方法】: x = " + x + ", y = " + y);
 		g.fillRect(x, y, 50, 50);
 		x += 10;
-		y += 10;
+		// y += 10;
 	}
 	
-	// 键盘监听事件处理类
+	// 键盘监听处理类
 	class MyKeyListener extends KeyAdapter {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			// 当按键按下去时触发
-			System.out.println("key pressed");
+			x += 200;
+			// repaint();
+			
 		}
 
 		@Override

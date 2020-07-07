@@ -9,7 +9,9 @@ import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
 
-	private static int x = 200, y = 200;
+	int x = 200, y = 200;
+	Dir dir = Dir.STOP;
+	private static final int SPEED = 10;
 
 	public TankFrame() {
 		// 创建窗口
@@ -39,13 +41,30 @@ public class TankFrame extends Frame {
 		// paint方法会使整个画布刷新
 //		System.out.println("【paint方法】: x = " + x + ", y = " + y);
 		g.fillRect(x, y, 50, 50);
+
+		switch (dir) {
+		case LEFT:
+			x -= SPEED;
+			break;
+		case UP:
+			y -= SPEED;
+			break;
+		case RIGHT:
+			x += SPEED;
+			break;
+		case DOWN:
+			y += SPEED;
+			break;
+		default:
+			break;
+		}
 		// x += 10;
 		// y += 10;
 	}
 
 	// 键盘监听处理类
 	class MyKeyListener extends KeyAdapter {
-		
+
 		// 左、上、右、下 四个按键的默认状态。
 		boolean bL = false;
 		boolean bU = false;
@@ -74,6 +93,8 @@ public class TankFrame extends Frame {
 			// x += 200;
 			// repaint();
 
+			setMainTankDir();
+
 		}
 
 		@Override
@@ -95,6 +116,19 @@ public class TankFrame extends Frame {
 			default:
 				break;
 			}
+
+			setMainTankDir();
+		}
+
+		private void setMainTankDir() {
+			if (bL)
+				dir = Dir.LEFT;
+			if (bU)
+				dir = Dir.UP;
+			if (bR)
+				dir = Dir.RIGHT;
+			if (bD)
+				dir = Dir.DOWN;
 		}
 
 	}

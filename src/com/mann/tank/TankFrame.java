@@ -9,9 +9,7 @@ import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
 
-	int x = 200, y = 200;
-	Dir dir = Dir.STOP;
-	private static final int SPEED = 10;
+	Tank myTank = new Tank(200, 200, Dir.STOP);
 
 	public TankFrame() {
 		// 创建窗口
@@ -38,28 +36,8 @@ public class TankFrame extends Frame {
 	@Override
 	public void paint(Graphics g) {
 
-		// paint方法会使整个画布刷新
-//		System.out.println("【paint方法】: x = " + x + ", y = " + y);
-		g.fillRect(x, y, 50, 50);
+		myTank.paint(g);
 
-		switch (dir) {
-		case LEFT:
-			x -= SPEED;
-			break;
-		case UP:
-			y -= SPEED;
-			break;
-		case RIGHT:
-			x += SPEED;
-			break;
-		case DOWN:
-			y += SPEED;
-			break;
-		default:
-			break;
-		}
-		// x += 10;
-		// y += 10;
 	}
 
 	// 键盘监听处理类
@@ -122,13 +100,13 @@ public class TankFrame extends Frame {
 
 		private void setMainTankDir() {
 			if (bL)
-				dir = Dir.LEFT;
-			if (bU)
-				dir = Dir.UP;
-			if (bR)
-				dir = Dir.RIGHT;
-			if (bD)
-				dir = Dir.DOWN;
+				myTank.setDir(Dir.LEFT);
+			else if (bU)
+				myTank.setDir(Dir.UP);
+			else if (bR)
+				myTank.setDir(Dir.RIGHT);
+			else if (bD)
+				myTank.setDir(Dir.DOWN);
 		}
 
 	}

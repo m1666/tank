@@ -9,7 +9,7 @@ import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
 
-	Tank myTank = new Tank(200, 200, Dir.STOP);
+	Tank myTank = new Tank(200, 200, Dir.DOWN);
 
 	public TankFrame() {
 		// 创建窗口
@@ -99,14 +99,19 @@ public class TankFrame extends Frame {
 		}
 
 		private void setMainTankDir() {
-			if (bL)
-				myTank.setDir(Dir.LEFT);
-			else if (bU)
-				myTank.setDir(Dir.UP);
-			else if (bR)
-				myTank.setDir(Dir.RIGHT);
-			else if (bD)
-				myTank.setDir(Dir.DOWN);
+			if (!bL && !bU && !bR && !bD)
+				myTank.setMoving(false);
+			else {
+				myTank.setMoving(true);
+				if (bL)
+					myTank.setDir(Dir.LEFT);
+				else if (bU)
+					myTank.setDir(Dir.UP);
+				else if (bR)
+					myTank.setDir(Dir.RIGHT);
+				else if (bD)
+					myTank.setDir(Dir.DOWN);
+			}
 		}
 
 	}

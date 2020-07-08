@@ -8,13 +8,15 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TankFrame extends Frame {
 
 	Tank myTank = new Tank(200, 200, Dir.DOWN, this);
-	Bullet bullet = new Bullet(300, 300, Dir.DOWN);
-	private static final int GAME_WIDTH = 800;
-	private static final int GAME_HEIGHT = 600;
+	List<Bullet> bulletList = new ArrayList<>();
+	protected static final int GAME_WIDTH = 800;
+	protected static final int GAME_HEIGHT = 600;
 
 	public TankFrame() {
 		// 创建窗口
@@ -40,6 +42,7 @@ public class TankFrame extends Frame {
 
 	// 利用双缓冲解决坦克闪烁问题
 	Image offScreenImage = null;
+
 	@Override
 	public void update(Graphics g) {
 		if (offScreenImage == null) {
@@ -57,8 +60,15 @@ public class TankFrame extends Frame {
 	@Override
 	public void paint(Graphics g) {
 
+		Color c = g.getColor();
+		g.setColor(Color.WHITE);
+		g.drawString("当前子弹的数量：" + bulletList.size(), 5, 40);
+		g.setColor(c);
+
 		myTank.paint(g);
-		bullet.paint(g);
+		for (int i = 0; i < bulletList.size(); i++) {
+			bulletList.get(i).paint(g);
+		}
 
 	}
 

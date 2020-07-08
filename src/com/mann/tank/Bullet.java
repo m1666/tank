@@ -35,13 +35,24 @@ public class Bullet {
 	 */
 	private Dir dir;
 
-	public Bullet(int x, int y, Dir dir) {
+	/**
+	 * 子弹是否还在界面内
+	 */
+	private boolean live = true;
+	
+	private TankFrame tankFrame = null;
+
+	public Bullet(int x, int y, Dir dir, TankFrame tankFrame) {
 		this.x = x;
 		this.y = y;
 		this.dir = dir;
+		this.tankFrame = tankFrame;
 	}
 
 	public void paint(Graphics g) {
+		if (!live) {
+			this.tankFrame.bulletList.remove(this);
+		}
 		Color c = g.getColor();
 		g.setColor(Color.RED);
 		g.fillOval(x, y, WIDTH, HEIGHT);
@@ -53,19 +64,22 @@ public class Bullet {
 	private void move() {
 		switch (this.dir) {
 		case LEFT:
-			x -= SPEED;
+			this.x -= SPEED;
 			break;
 		case UP:
-			y -= SPEED;
+			this.y -= SPEED;
 			break;
 		case RIGHT:
-			x += SPEED;
+			this.x += SPEED;
 			break;
 		case DOWN:
-			y += SPEED;
+			this.y += SPEED;
 			break;
 		default:
 			break;
+		}
+		if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) {
+			this.live = false;
 		}
 	}
 

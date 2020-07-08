@@ -88,7 +88,7 @@ public class Tank {
 	}
 
 	public void fire() {
-		this.tankFrame.bullet = new Bullet(this.x, this.y, this.dir);
+		this.tankFrame.bulletList.add(new Bullet(this.x, this.y, this.dir,this.tankFrame));
 	}
 
 	private void move() {

@@ -30,11 +30,17 @@ public class Tank {
 	 */
 	private static final int SPEED = 5;
 
-	public Tank(int x, int y, Dir dir) {
+	/**
+	 * 坦克所在的窗口对象
+	 */
+	private TankFrame tankFrame = null;
+
+	public Tank(int x, int y, Dir dir, TankFrame tankFrame) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.dir = dir;
+		this.tankFrame = tankFrame;
 	}
 
 	public int getX() {
@@ -79,6 +85,10 @@ public class Tank {
 		g.fillRect(this.x, this.y, 50, 50);
 		g.setColor(c);
 		move();
+	}
+
+	public void fire() {
+		this.tankFrame.bullet = new Bullet(this.x, this.y, this.dir);
 	}
 
 	private void move() {

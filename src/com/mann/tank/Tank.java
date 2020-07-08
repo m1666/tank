@@ -1,5 +1,6 @@
 package com.mann.tank;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Tank {
@@ -73,8 +74,10 @@ public class Tank {
 	}
 
 	public void paint(Graphics g) {
+		Color c = g.getColor();
+		g.setColor(Color.GREEN);
 		g.fillRect(this.x, this.y, 50, 50);
-
+		g.setColor(c);
 		move();
 	}
 

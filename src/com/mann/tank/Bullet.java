@@ -40,6 +40,9 @@ public class Bullet {
 	 */
 	private boolean live = true;
 	
+	/**
+	 * 子弹所在的窗口对象
+	 */
 	private TankFrame tankFrame = null;
 
 	public Bullet(int x, int y, Dir dir, TankFrame tankFrame) {

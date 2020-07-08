@@ -27,7 +27,7 @@ public class Tank {
 	/**
 	 * 坦克的默认速度
 	 */
-	private static final int SPEED = 10;
+	private static final int SPEED = 5;
 
 	public Tank(int x, int y, Dir dir) {
 		super();

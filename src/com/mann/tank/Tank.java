@@ -31,6 +31,16 @@ public class Tank {
 	private static final int SPEED = 5;
 
 	/**
+	 * 坦克的宽度
+	 */
+	private static final int WIDTH = ResourceMgr.tankD.getWidth();
+
+	/**
+	 * 坦克的高度
+	 */
+	private static final int HEIGHT = ResourceMgr.tankD.getHeight();
+
+	/**
 	 * 坦克所在的窗口对象
 	 */
 	private TankFrame tankFrame = null;
@@ -79,6 +89,14 @@ public class Tank {
 		this.moving = moving;
 	}
 
+	public static int getWidth() {
+		return WIDTH;
+	}
+
+	public static int getHeight() {
+		return HEIGHT;
+	}
+
 	public void paint(Graphics g) {
 
 		switch (dir) {
@@ -103,7 +121,9 @@ public class Tank {
 	}
 
 	public void fire() {
-		this.tankFrame.bulletList.add(new Bullet(this.x, this.y, this.dir, this.tankFrame));
+		int bX = this.x + Tank.getWidth() / 2 - Bullet.getWidth() / 2;
+		int bY = this.y + Tank.getHeight() / 2 - Bullet.getHeight() / 2;
+		this.tankFrame.bulletList.add(new Bullet(bX, bY, this.dir, this.tankFrame));
 	}
 
 	private void move() {

@@ -13,12 +13,12 @@ public class Bullet {
 	/**
 	 * 子弹大小的宽度
 	 */
-	private static final int WIDTH = 5;
+	private static final int WIDTH = ResourceMgr.bulletD.getWidth();
 
 	/**
 	 * 子弹大小的高度
 	 */
-	private static final int HEIGHT = 5;
+	private static final int HEIGHT = ResourceMgr.bulletD.getHeight();
 
 	/**
 	 * 子弹的横坐标
@@ -51,6 +51,74 @@ public class Bullet {
 		this.dir = dir;
 		this.tankFrame = tankFrame;
 	}
+	
+	
+
+	public int getX() {
+		return x;
+	}
+
+
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+
+
+	public int getY() {
+		return y;
+	}
+
+
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+
+
+	public Dir getDir() {
+		return dir;
+	}
+
+
+
+	public void setDir(Dir dir) {
+		this.dir = dir;
+	}
+
+
+
+	public boolean isLive() {
+		return live;
+	}
+
+
+
+	public void setLive(boolean live) {
+		this.live = live;
+	}
+
+
+
+	public static int getSpeed() {
+		return SPEED;
+	}
+
+
+
+	public static int getWidth() {
+		return WIDTH;
+	}
+
+
+
+	public static int getHeight() {
+		return HEIGHT;
+	}
+
+
 
 	public void paint(Graphics g) {
 		if (!live) {

@@ -39,7 +39,7 @@ public class Bullet {
 	 * 子弹是否还在界面内
 	 */
 	private boolean live = true;
-	
+
 	/**
 	 * 子弹所在的窗口对象
 	 */
@@ -56,10 +56,23 @@ public class Bullet {
 		if (!live) {
 			this.tankFrame.bulletList.remove(this);
 		}
-		Color c = g.getColor();
-		g.setColor(Color.RED);
-		g.fillOval(x, y, WIDTH, HEIGHT);
-		g.setColor(c);
+
+		switch (dir) {
+		case LEFT:
+			g.drawImage(ResourceMgr.bulletL, this.x, this.y, null);
+			break;
+		case UP:
+			g.drawImage(ResourceMgr.bulletU, this.x, this.y, null);
+			break;
+		case RIGHT:
+			g.drawImage(ResourceMgr.bulletR, this.x, this.y, null);
+			break;
+		case DOWN:
+			g.drawImage(ResourceMgr.bulletD, this.x, this.y, null);
+			break;
+		default:
+			break;
+		}
 
 		move();
 	}

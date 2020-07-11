@@ -80,15 +80,30 @@ public class Tank {
 	}
 
 	public void paint(Graphics g) {
-		Color c = g.getColor();
-		g.setColor(Color.GREEN);
-		g.fillRect(this.x, this.y, 50, 50);
-		g.setColor(c);
+
+		switch (dir) {
+
+		case LEFT:
+			g.drawImage(ResourceMgr.tankL, this.x, this.y, null);
+			break;
+		case UP:
+			g.drawImage(ResourceMgr.tankU, this.x, this.y, null);
+			break;
+		case RIGHT:
+			g.drawImage(ResourceMgr.tankR, this.x, this.y, null);
+			break;
+		case DOWN:
+			g.drawImage(ResourceMgr.tankD, this.x, this.y, null);
+			break;
+		default:
+			break;
+		}
+
 		move();
 	}
 
 	public void fire() {
-		this.tankFrame.bulletList.add(new Bullet(this.x, this.y, this.dir,this.tankFrame));
+		this.tankFrame.bulletList.add(new Bullet(this.x, this.y, this.dir, this.tankFrame));
 	}
 
 	private void move() {

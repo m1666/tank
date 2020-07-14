@@ -2,6 +2,7 @@ package com.mann.tank;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Bullet {
 
@@ -38,7 +39,7 @@ public class Bullet {
 	/**
 	 * 子弹是否还在界面内
 	 */
-	private boolean live = true;
+	private boolean liveing = true;
 
 	/**
 	 * 子弹所在的窗口对象
@@ -51,77 +52,53 @@ public class Bullet {
 		this.dir = dir;
 		this.tankFrame = tankFrame;
 	}
-	
-	
 
 	public int getX() {
 		return x;
 	}
 
-
-
 	public void setX(int x) {
 		this.x = x;
 	}
-
-
 
 	public int getY() {
 		return y;
 	}
 
-
-
 	public void setY(int y) {
 		this.y = y;
 	}
-
-
 
 	public Dir getDir() {
 		return dir;
 	}
 
-
-
 	public void setDir(Dir dir) {
 		this.dir = dir;
 	}
 
-
-
 	public boolean isLive() {
-		return live;
+		return liveing;
 	}
-
-
 
 	public void setLive(boolean live) {
-		this.live = live;
+		this.liveing = live;
 	}
-
-
 
 	public static int getSpeed() {
 		return SPEED;
 	}
 
-
-
 	public static int getWidth() {
 		return WIDTH;
 	}
-
-
 
 	public static int getHeight() {
 		return HEIGHT;
 	}
 
-
-
 	public void paint(Graphics g) {
-		if (!live) {
+		if (!liveing) {
 			this.tankFrame.bulletList.remove(this);
 		}
 
@@ -163,8 +140,26 @@ public class Bullet {
 			break;
 		}
 		if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) {
-			this.live = false;
+			this.liveing = false;
 		}
+	}
+
+	/**
+	 * 坦克碰撞验证
+	 * 
+	 * @param tank
+	 */
+	public void collideWith(Tank tank) {
+		Rectangle rectBullet = new Rectangle(this.x, this.y, this.WIDTH, this.HEIGHT);
+		Rectangle rectTank = new Rectangle(tank.getX(), tank.getY(), tank.getWidth(), tank.getHeight());
+		if (rectBullet.intersects(rectTank)) {
+			tank.die();
+			this.die();
+		}
+	}
+
+	public void die() {
+		this.liveing = false;
 	}
 
 }

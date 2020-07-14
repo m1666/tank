@@ -41,6 +41,11 @@ public class Tank {
 	private static final int HEIGHT = ResourceMgr.tankD.getHeight();
 
 	/**
+	 * 坦克的默认生成状态
+	 */
+	private boolean living = true;
+
+	/**
 	 * 坦克所在的窗口对象
 	 */
 	private TankFrame tankFrame = null;
@@ -97,7 +102,18 @@ public class Tank {
 		return HEIGHT;
 	}
 
+	public boolean isLiving() {
+		return living;
+	}
+
+	public void setLiving(boolean living) {
+		this.living = living;
+	}
+
 	public void paint(Graphics g) {
+		if (!living) {
+			this.tankFrame.tankList.remove(this);
+		}
 
 		switch (dir) {
 
@@ -145,5 +161,9 @@ public class Tank {
 		default:
 			break;
 		}
+	}
+
+	public void die() {
+		this.living = false;
 	}
 }

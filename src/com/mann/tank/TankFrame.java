@@ -14,7 +14,7 @@ import java.util.List;
 
 public class TankFrame extends Frame {
 
-	Tank myTank = new Tank(600, 200, Dir.DOWN, this);
+	Tank myTank = new Tank(600, 200, Dir.DOWN, Group.GOOD, this);
 	List<Bullet> bulletList = new ArrayList<>();
 	List<Tank> tankList = new ArrayList<>();
 	protected static final int GAME_WIDTH = 800;
@@ -76,10 +76,10 @@ public class TankFrame extends Frame {
 		for (int i = 0; i < tankList.size(); i++) {
 			tankList.get(i).paint(g);
 		}
-		
+
 		for (int i = 0; i < bulletList.size(); i++) {
 			for (int j = 0; j < tankList.size(); j++) {
-			bulletList.get(i).collideWith(tankList.get(j));
+				bulletList.get(i).collideWith(tankList.get(j));
 			}
 		}
 

@@ -2,6 +2,7 @@ package com.mann.tank;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 public class Tank {
 
@@ -50,11 +51,30 @@ public class Tank {
 	 */
 	private TankFrame tankFrame = null;
 
+	/**
+	 * 随机数
+	 */
+	private Random random = new Random();
+
+	/**
+	 * 坦克阵营
+	 */
+	private Group group = Group.BAD;
+
 	public Tank(int x, int y, Dir dir, TankFrame tankFrame) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.dir = dir;
+		this.tankFrame = tankFrame;
+	}
+
+	public Tank(int x, int y, Dir dir, Group group, TankFrame tankFrame) {
+		super();
+		this.x = x;
+		this.y = y;
+		this.dir = dir;
+		this.group = group;
 		this.tankFrame = tankFrame;
 	}
 
@@ -109,6 +129,24 @@ public class Tank {
 	public void setLiving(boolean living) {
 		this.living = living;
 	}
+	
+	
+
+	public Random getRandom() {
+		return random;
+	}
+
+	public void setRandom(Random random) {
+		this.random = random;
+	}
+
+	public Group getGroup() {
+		return group;
+	}
+
+	public void setGroup(Group group) {
+		this.group = group;
+	}
 
 	public void paint(Graphics g) {
 		if (!living) {
@@ -161,6 +199,11 @@ public class Tank {
 		default:
 			break;
 		}
+
+		if (random.nextInt(10) > 8) {
+			this.fire();
+		}
+
 	}
 
 	public void die() {

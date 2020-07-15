@@ -1,6 +1,5 @@
 package com.mann.tank;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -54,6 +53,7 @@ public class Bullet {
 	public Bullet(int x, int y, Dir dir, TankFrame tankFrame) {
 		this.x = x;
 		this.y = y;
+		
 		this.dir = dir;
 		this.tankFrame = tankFrame;
 	}

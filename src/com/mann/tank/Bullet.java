@@ -53,7 +53,7 @@ public class Bullet {
 	public Bullet(int x, int y, Dir dir, TankFrame tankFrame) {
 		this.x = x;
 		this.y = y;
-		
+
 		this.dir = dir;
 		this.tankFrame = tankFrame;
 	}
@@ -180,6 +180,7 @@ public class Bullet {
 		if (rectBullet.intersects(rectTank)) {
 			tank.die();
 			this.die();
+			this.tankFrame.explodeList.add(new Explode(this.x,this.y,tankFrame));
 		}
 	}
 

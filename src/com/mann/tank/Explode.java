@@ -26,11 +26,6 @@ public class Explode {
 	private int y;
 
 	/**
-	 * 爆炸是否还在界面内
-	 */
-	private boolean liveing = true;
-
-	/**
 	 * 爆炸的当前锚点
 	 */
 	private int step = 0;
@@ -49,14 +44,6 @@ public class Explode {
 
 	public void setY(int y) {
 		this.y = y;
-	}
-
-	public boolean isLiveing() {
-		return liveing;
-	}
-
-	public void setLiveing(boolean liveing) {
-		this.liveing = liveing;
 	}
 
 	public TankFrame getTankFrame() {
@@ -91,7 +78,7 @@ public class Explode {
 	public void paint(Graphics g) {
 		g.drawImage(ResourceMgr.explodes[step++], this.x, this.y, null);
 		if (step >= ResourceMgr.explodes.length) {
-			step = 0;
+			tankFrame.explodeList.remove(this);
 		}
 	}
 

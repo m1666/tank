@@ -19,8 +19,8 @@ public class TankFrame extends Frame {
 	List<Tank> tankList = new ArrayList<>();
 	Explode explode = new Explode(100, 100, this);
 
-	protected static final int GAME_WIDTH = 800;
-	protected static final int GAME_HEIGHT = 600;
+	protected static final int GAME_WIDTH = 1080;
+	protected static final int GAME_HEIGHT = 960;
 
 	public TankFrame() {
 		// 创建窗口
@@ -164,6 +164,7 @@ public class TankFrame extends Frame {
 				else if (bD)
 					myTank.setDir(Dir.DOWN);
 			}
+			new Thread(()->new Audio("audio/tank_move.wav").play()).start();
 		}
 
 	}

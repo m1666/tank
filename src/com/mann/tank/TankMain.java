@@ -10,9 +10,11 @@ public class TankMain {
 		for (int i = 0; i < 5; i++) {
 			tankFrame.tankList.add(new Tank(50 + i * 80, 200, Dir.DOWN, tankFrame));
 		}
+		
+//		new Thread(() -> new Audio("audio/war1.wav").loop()).start();
 
 		while (true) {
-			Thread.sleep(50);
+			Thread.sleep(25);
 			tankFrame.repaint();
 		}
 	}

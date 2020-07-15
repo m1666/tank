@@ -8,7 +8,7 @@ public class Bullet {
 	/**
 	 * 子弹发射速度
 	 */
-	private static final int SPEED = 10;
+	private static final int SPEED = 6;
 
 	/**
 	 * 子弹大小的宽度
@@ -48,7 +48,7 @@ public class Bullet {
 	/**
 	 * 子弹是由哪一方打出
 	 */
-	private Group group = Group.BAD;
+	private Group group = Group.GOOD;
 
 	public Bullet(int x, int y, Dir dir, TankFrame tankFrame) {
 		this.x = x;

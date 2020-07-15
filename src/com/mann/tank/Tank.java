@@ -29,17 +29,17 @@ public class Tank {
 	/**
 	 * 坦克的默认速度
 	 */
-	private static final int SPEED = 5;
+	private static final int SPEED = 2;
 
 	/**
 	 * 坦克的宽度
 	 */
-	private static final int WIDTH = ResourceMgr.tankD.getWidth();
+	private static final int WIDTH = ResourceMgr.tankU.getWidth();
 
 	/**
 	 * 坦克的高度
 	 */
-	private static final int HEIGHT = ResourceMgr.tankD.getHeight();
+	private static final int HEIGHT = ResourceMgr.tankU.getHeight();
 
 	/**
 	 * 坦克的默认生成状态
@@ -178,6 +178,8 @@ public class Tank {
 		int bX = this.x + Tank.getWidth() / 2 - Bullet.getWidth() / 2;
 		int bY = this.y + Tank.getHeight() / 2 - Bullet.getHeight() / 2;
 		this.tankFrame.bulletList.add(new Bullet(bX, bY, this.dir, this.tankFrame));
+		
+		if(this.group == Group.GOOD) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
 	}
 
 	private void move() {
